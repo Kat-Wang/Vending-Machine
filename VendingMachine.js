@@ -1,4 +1,9 @@
-
+import {
+  drinks,
+  highlightButton,
+  unhighlightButton,
+  selectDrink,
+} from "./SupportingFunctions.js";
 
 const body = document.body.getBoundingClientRect();
 
@@ -19,6 +24,7 @@ Object.assign(background.style, {
   backgroundColor: "indianred",
   width: `${backgroundSizes.width}px`,
   height: `${backgroundSizes.height}px`,
+  margin: 0,
 });
 
 const vendingMachineLocation = {
@@ -33,6 +39,7 @@ Object.assign(vendingMachine.style, {
   transform: `translate(${vendingMachineLocation.x}px,${vendingMachineLocation.y}px)`,
   width: 400,
   height: 600,
+  margin: 0,
 });
 
 document.body.append(background);
@@ -40,6 +47,8 @@ document.body.append(vendingMachine);
 
 const buttons = [...Array(21).keys()].map((i) => {
   const button = document.createElement("button");
+  const left = vendingMachineLocation.x + 60 + (i % 7) * (28 + 14);
+  const top = vendingMachineLocation.y + 120 + Math.floor(i / 7) * (86 + 12);
   Object.assign(button.style, {
     padding: 0,
     position: "absolute",
@@ -47,12 +56,21 @@ const buttons = [...Array(21).keys()].map((i) => {
     background: "url('./button.png')",
     width: 28,
     height: 12,
-    transform: `translate(${
-      vendingMachineLocation.x + 60 + (i % 7) * (28 + 14)
-    }px,${vendingMachineLocation.y + 120 + Math.floor(i / 7) * (86 + 12)}px)`,
+    transform: `translate(${left}px,${top}px)`,
   });
-  button.onclick = function selectDrink
-  return { button, i };
+  button.addEventListener("mouseover", () => highlightButton(left, top));
+  button.addEventListener("click", () => selectDrink(i));
+  button.addEventListener("mouseout", () => unhighlightButton());
+  return { button, i, left, top };
 });
 
-buttons.forEach((button) => document.body.append(button.button));
+buttons.forEach((button) => {
+  button.button = document.body.append(button.button);
+});
+
+// const coin = [...Array(5).keys()]
+
+// {
+
+//   wdith 26
+// }
