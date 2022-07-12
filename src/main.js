@@ -1,37 +1,36 @@
 import { background } from "./background.js";
-import { buttons } from "./buttons/buttons.js";
-import { vendingMachine } from "./vendingMachine.js";
-import { coinhole } from "./coinhole.js";
+import { vendingMachine } from "./vendingMachine/vendingMachine.js";
 import { coins } from "./coins.js";
 
-export const body = document.body.getBoundingClientRect();
+Object.assign(document.body.style, {
+  margin: 0,
+  padding: 0,
+  width: "100%",
+  height: "100%",
+});
 
 export const backgroundSizes = {
   width: 700,
   height: 700,
 };
 
-export const vendingMachineLocation = {
-  x: body.width / 2 - 400 / 2,
-  y: 10 + backgroundSizes.height / 2 - 600 / 2,
-};
-
-const mouseDown = (event, top, left) => {
-  console.log(event);
-
-  console.log(coin);
-};
-
 function main() {
-  document.body.append(background());
+  const body = document.body.getBoundingClientRect();
 
-  document.body.append(vendingMachine());
+  const origin = {
+    x: body.width / 2,
+    y: body.height / 2,
+  };
 
-  document.body.append(...buttons().map(({ button }) => button));
-
-  document.body.append(coinhole());
-
-  document.body.append(...coins());
+  document.body.append(
+    background(origin),
+    ...vendingMachine(origin),
+    ...coins()
+  );
 }
 
-main();
+new ResizeObserver(() => {
+  document.body.innerHTML = "";
+
+  main();
+}).observe(document.body);

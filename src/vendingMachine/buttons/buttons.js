@@ -1,15 +1,29 @@
 import { highlight } from "./highlight.js";
 import { unhighlight } from "./unhighlight.js";
 import { selectDrink } from "./selectDrink.js";
-import { vendingMachineLocation } from "../main.js";
 
-export const buttons = () =>
+const size = {
+  leftSpace: 60,
+  topSpace: 120,
+  width: 28,
+  height: 12,
+  xDisplacement: 14,
+  yDisplacement: 86,
+};
+
+export const buttons = (vendingMachineLocation) =>
   [...Array(21).keys()].map((i) => {
     const button = document.createElement("button");
 
-    const left = vendingMachineLocation.x + 60 + (i % 7) * (28 + 14);
+    const left =
+      vendingMachineLocation.x +
+      size.leftSpace +
+      (i % 7) * (size.width + size.xDisplacement);
 
-    const top = vendingMachineLocation.y + 120 + Math.floor(i / 7) * (86 + 12);
+    const top =
+      vendingMachineLocation.y +
+      size.topSpace +
+      Math.floor(i / 7) * (size.height + size.yDisplacement);
 
     Object.assign(button.style, {
       padding: 0,
@@ -18,13 +32,11 @@ export const buttons = () =>
       background: "url('./assets/button.png')",
       width: 28,
       height: 12,
-      transform: `translate(${left}px,${top}px)`,
+      left,
+      top,
     });
 
-    button.addEventListener(
-      "mouseover",
-      (_, potato = console.log({ i, top, left })) => highlight(left, top)
-    );
+    button.addEventListener("mouseover", () => highlight(left, top));
 
     button.addEventListener("click", () => selectDrink(i));
 
