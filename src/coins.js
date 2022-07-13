@@ -3,6 +3,8 @@ export const coins = () =>
     const coin = document.createElement("div");
 
     Object.assign(coin.style, {
+      position: "absolute",
+      top: i * 20,
       backgroundImage: "url('./assets/coin.png')",
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",
@@ -11,11 +13,10 @@ export const coins = () =>
       height: 38,
     });
 
-    coin.addEventListener("mousedown", (event) => mouseDown(event, top, left));
-
-    coin.addEventListener("dragstart", (event) => console.log("dragging"));
-
-    coin.addEventListener("dragend", (event) => console.log("dragend"));
+    // coin.onmousedown = function (event) {
+    //   //move coin under cursor
+    //   movement(event.clientX, event.clientY)
+    // };
 
     return coin;
   });
