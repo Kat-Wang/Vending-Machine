@@ -9,6 +9,7 @@ export const coinhole = ({ x, y }) => {
     top: y + 352,
     width: 66,
     height: 72,
+    userSelect: "none",
   });
 
   return result;

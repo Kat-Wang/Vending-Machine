@@ -15,13 +15,13 @@ export const vendingMachine = (origin) => {
     x: origin.x - size.width / 2,
     y: origin.y - size.height / 2,
   };
-  console.log(vendingMachineLocation);
 
   Object.assign(result.style, {
     position: "absolute",
     left: vendingMachineLocation.x,
     top: vendingMachineLocation.y,
     ...size,
+    userSelect: "none",
   });
 
   return [

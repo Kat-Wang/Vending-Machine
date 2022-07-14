@@ -1,3 +1,8 @@
+const movement = (coin, mouseX, mouseY) => {
+  coin.style.top = mouseY - 19;
+  coin.style.left = mouseX - 19;
+};
+
 export const coins = () =>
   [...Array(5).keys()].map((i) => {
     const coin = document.createElement("div");
@@ -12,11 +17,20 @@ export const coins = () =>
       width: 38,
       height: 38,
     });
+    coin.onmousedown = function (event) {
+      movement(coin, event.clientX, event.clientY);
 
-    // coin.onmousedown = function (event) {
-    //   //move coin under cursor
-    //   movement(event.clientX, event.clientY)
-    // };
+      const onMouseMove = (event) => {
+        movement(coin, event.clientX, event.clientY);
+      };
+
+      document.addEventListener("mousemove", onMouseMove);
+
+      coin.onmouseup = function () {
+        document.removeEventListener("mousemove", onMouseMove);
+        coin.onmouseup = null;
+      };
+    };
 
     return coin;
   });
