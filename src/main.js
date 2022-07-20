@@ -29,11 +29,13 @@ function main() {
     Object.assign(document.createElement("style"), {
       textContent: `
       @keyframes spin {
-        from {
-          transform: rotateY(0deg);
-        }
         to {
           transform: rotateY(360deg);
+        }
+      }
+      @keyframes pay {
+        to {
+          transform: rotateX(90deg);
         }
       }
       `,

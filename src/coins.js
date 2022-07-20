@@ -31,6 +31,7 @@ export const sides = () =>
       backgroundRepeat: "no-repeat",
       width: sideSize,
       height: sideSize,
+      pointerEvents: "none",
       transform: `translate(${coinSize / 2 - sideSize / 2}px, ${
         coinSize / 2 - sideSize / 2
       }px) rotate3d(${0}, ${0}, ${1}, ${(360 / n) * i}deg) translate(${
@@ -58,8 +59,7 @@ export const coins = () =>
       width: coinSize,
       height: coinSize,
       transformStyle: "preserve-3d",
-      // transform: `rotateY(${40}deg)`,
-      animation: "7s linear 0s infinite spin",
+      animation: "7s linear infinite spin",
     });
 
     coin.onmousedown = function (event) {
@@ -87,9 +87,10 @@ export const coins = () =>
 
       const onMouseUp = (event) => {
         document.removeEventListener("mousemove", onMouseMove);
-        coin.onmouseup = null;
+        document.removeEventListener("mousemup", onMouseUp);
         document.body.style.cursor = "revert";
         coin.style.cursor = "pointer";
+        coin.style.animation = ".3s linear forwards pay";
       };
 
       document.addEventListener("mouseup", onMouseUp);
@@ -108,6 +109,7 @@ export const topSide = () => {
     // backgroundColor: "blue",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
+    pointerEvents: "none",
     transform: `translate(${0}px, ${0}px) translateX(${0}px) translateZ(${
       sideSize / 2
     }px)`,
@@ -127,6 +129,7 @@ export const bottomSide = () => {
     // backgroundColor: "red",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
+    pointerEvents: "none",
     transform: `translate(${0}px, ${0}px) translateX(${0}px) translateZ(${
       -sideSize / 2
     }px)`,
