@@ -16,12 +16,15 @@ export const vendingMachine = (origin) => {
     y: origin.y - size.height / 2,
   };
 
+  result.draggable = "false";
+
   Object.assign(result.style, {
     position: "absolute",
     left: vendingMachineLocation.x,
     top: vendingMachineLocation.y,
     ...size,
     userSelect: "none",
+    pointerEvents: "none",
   });
 
   return [

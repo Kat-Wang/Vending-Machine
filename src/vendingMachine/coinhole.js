@@ -1,6 +1,6 @@
 export const coinhole = ({ x, y }) => {
   const result = document.createElement("img");
-
+  result.id = "coinhole";
   result.src = "./assets/coinhole.png";
 
   Object.assign(result.style, {
@@ -10,6 +10,7 @@ export const coinhole = ({ x, y }) => {
     width: 66,
     height: 72,
     userSelect: "none",
+    pointerEvents: "none",
   });
 
   return result;
