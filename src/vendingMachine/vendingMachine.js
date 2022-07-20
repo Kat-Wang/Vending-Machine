@@ -16,7 +16,7 @@ export const vendingMachine = (origin) => {
     y: origin.y - size.height / 2,
   };
 
-  result.draggable = "false";
+  result.draggable = false;
 
   Object.assign(result.style, {
     position: "absolute",
