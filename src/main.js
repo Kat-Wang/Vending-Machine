@@ -1,6 +1,6 @@
 import { background } from "./background.js";
 import { vendingMachine } from "./vendingMachine/vendingMachine.js";
-import { coins } from "./coins.js";
+import { coins, sides, topSide, bottomSide } from "./coins.js";
 
 Object.assign(document.body.style, {
   margin: 0,
@@ -25,8 +25,24 @@ function main() {
   document.body.append(
     background(origin),
     ...vendingMachine(origin),
-    ...coins()
+    ...coins(),
+    Object.assign(document.createElement("style"), {
+      textContent: `
+      @keyframes spin {
+        from {
+          transform: rotateY(0deg);
+        }
+        to {
+          transform: rotateY(360deg);
+        }
+      }
+      `,
+    })
   );
+
+  [...Array(5).keys()].forEach((i) => {
+    document.getElementById(`${i}`).append(...sides(), bottomSide(), topSide());
+  });
 }
 
 new ResizeObserver(() => {
@@ -34,3 +50,63 @@ new ResizeObserver(() => {
 
   main();
 }).observe(document.body);
+
+// const bigBoi = document.createElement("div");
+// Object.assign(bigBoi.style, {
+//   width: 38,
+//   height: 38,
+//   backgroundColor: "blue",
+// transformStyle: "preserve-3d",
+// transform: `translate(${50}px,${50}px) rotateX(${15}deg)`,
+// });
+
+// document.body.append(bigBoi);
+
+// const n = 30;
+
+// const sides = [...Array(n).keys()].map((i) => {
+//   const side = document.createElement("div");
+//   Object.assign(side.style, {
+//     position: "absolute",
+//     left: 0,
+//     top: 0,
+//     // background: "url('./assets/coin.png')",
+//     backgroundColor: "#4c4d59",
+//     backgroundSize: "contain",
+//     backgroundRepeat: "no-repeat",
+//     width: 3.8,
+//     height: 3.8,
+//     transform: `translate(${15.2}px, ${15.2}px) rotate3d(${0}, ${0}, ${1}, ${
+//       (360 / n) * i
+//     }deg) translate(${15.2}px, ${0}px) rotateY(${90}deg)`,
+//   });
+//   return side;
+// });
+
+// const top = document.createElement("div");
+// Object.assign(top.style, {
+//   position: "absolute",
+//   width: 400,
+//   height: 400,
+//   background: "url('./assets/coin.png')",
+//   // backgroundColor: "blue",
+//   backgroundSize: "contain",
+//   backgroundRepeat: "no-repeat",
+//   transform: `translate(${50}px, ${50}px) translateX(${-25}px) translateZ(${30}px)`,
+// });
+
+// const bottom = document.createElement("div");
+// Object.assign(bottom.style, {
+//   position: "abosulte",
+//   width: 400,
+//   height: 400,
+//   background: "url('./assets/coin.png')",
+//   // backgroundColor: "red",
+//   backgroundSize: "contain",
+//   backgroundRepeat: "no-repeat",
+//   transform: `translate(${50}px, ${50}px) translateX(${-25}px) translateZ(${-15}px)`,
+// });
+
+// bigBoi.append(...sides);
+// // bigBoi.append(top);
+// // bigBoi.append(bottom);
