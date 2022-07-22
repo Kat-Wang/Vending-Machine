@@ -1,18 +1,22 @@
 import { backgroundSizes } from "./main.js";
 
 const inCoinhole = (event) => {
-  const coinholeLocation = {
-    left: document.getElementById("coinhole").getBoundingClientRect().left,
-    top: document.getElementById("coinhole").getBoundingClientRect().top,
-    bottom: document.getElementById("coinhole").getBoundingClientRect().bottom,
-    right: document.getElementById("coinhole").getBoundingClientRect().right,
-  };
+  const coinholeLocation = ((
+    coinhole = document.getElementById("coinhole").getBoundingClientRect()
+  ) => ({
+    length: coinhole.right - coinhole.left,
+    height: coinhole.bottom - coinhole.top,
+    left: coinhole.left,
+    top: coinhole.top,
+    bottom: coinhole.bottom,
+    right: coinhole.right,
+  }))();
 
   return (
-    event.clientX > coinholeLocation.left &&
-    event.clientX < coinholeLocation.right &&
-    event.clientY < coinholeLocation.bottom &&
-    event.clientY > coinholeLocation.top
+    event.clientX > coinholeLocation.left + coinholeLocation.length / 4 &&
+    event.clientX < coinholeLocation.right - coinholeLocation.length / 4 &&
+    event.clientY < coinholeLocation.bottom - coinholeLocation.height / 4 &&
+    event.clientY > coinholeLocation.top + coinholeLocation.height / 4
   );
 };
 
