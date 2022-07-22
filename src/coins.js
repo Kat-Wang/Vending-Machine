@@ -1,3 +1,5 @@
+import { backgroundSizes } from "./main.js";
+
 const inCoinhole = (event) => {
   const coinholeLocation = {
     left: document.getElementById("coinhole").getBoundingClientRect().left,
@@ -41,16 +43,19 @@ export const sides = () =>
     return side;
   });
 
-export const coins = () =>
+export const coins = (origin) =>
   [...Array(5).keys()].map((i) => {
     const coin = document.createElement("div");
 
     coin.id = `${i}`;
 
+    coin.draggable = false;
+
     Object.assign(coin.style, {
       cursor: "pointer",
       position: "absolute",
-      top: i * 40,
+      top: origin.y - backgroundSizes.height / 2 + 10 + i * 40,
+      left: origin.x - backgroundSizes.width / 2 + 10,
       // backgroundColor: "#ae70707a",
       /* backgroundImage: "url('./assets/coin.png')",
       backgroundSize: "contain",
@@ -77,20 +82,23 @@ export const coins = () =>
         movement(coin, event.clientX, event.clientY);
         document.body.style.cursor = "grab";
         coin.style.cursor = "grab";
-        if (inCoinhole(event)) {
-          //check that mouse is in coinhole AND that there is no animation
-          console.log("in the coinhole");
-        }
       };
 
       document.addEventListener("mousemove", onMouseMove);
 
       const onMouseUp = (event) => {
         document.removeEventListener("mousemove", onMouseMove);
-        document.removeEventListener("mousemup", onMouseUp);
         document.body.style.cursor = "revert";
         coin.style.cursor = "pointer";
-        coin.style.animation = ".3s linear forwards pay";
+
+        if (inCoinhole(event)) {
+          coin.style.animation = ".2s linear forwards pay";
+          coin.addEventListener("animationend", () => {
+            coin.remove();
+          });
+        }
+
+        document.removeEventListener("mouseup", onMouseUp);
       };
 
       document.addEventListener("mouseup", onMouseUp);
