@@ -8,6 +8,7 @@ export const background = (origin) => {
     left: origin.x - backgroundSizes.width / 2,
     top: origin.y - backgroundSizes.height / 2,
     backgroundColor: "indianred",
+    pointerEvents: "none",
     width: `${backgroundSizes.width}px`,
     height: `${backgroundSizes.height}px`,
   });

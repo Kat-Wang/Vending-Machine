@@ -17,6 +17,8 @@ export const backgroundSizes = {
 function main() {
   const body = document.body.getBoundingClientRect();
 
+  document.body.draggable = false;
+
   const origin = {
     x: body.width / 2,
     y: body.height / 2,
@@ -25,7 +27,7 @@ function main() {
   document.body.append(
     background(origin),
     ...vendingMachine(origin),
-    ...coins(),
+    ...coins(origin),
     Object.assign(document.createElement("style"), {
       textContent: `
       @keyframes spin {
