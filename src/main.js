@@ -25,13 +25,13 @@ function main() {
     y: body.height / 2,
   };
 
-  //test code
-  const box = document.createElement("div");
+  //color testing code
+  /*  const box = document.createElement("div");
   box.style.position = "absolute";
   box.style.width = 100;
   box.style.height = 100;
   box.style.backgroundColor = "#1b3c4b6b";
-  document.body.append(box);
+  document.body.append(box); */
 
   document.body.append(
     background(origin),
