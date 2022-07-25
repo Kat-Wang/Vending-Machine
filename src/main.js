@@ -1,6 +1,7 @@
 import { background } from "./background.js";
 import { vendingMachine } from "./vendingMachine/vendingMachine.js";
 import { coins, sides, topSide, bottomSide } from "./coins.js";
+import { lever } from "./lever.js";
 
 Object.assign(document.body.style, {
   margin: 0,
@@ -24,10 +25,19 @@ function main() {
     y: body.height / 2,
   };
 
+  //test code
+  const box = document.createElement("div");
+  box.style.position = "absolute";
+  box.style.width = 100;
+  box.style.height = 100;
+  box.style.backgroundColor = "#1b3c4b6b";
+  document.body.append(box);
+
   document.body.append(
     background(origin),
     ...vendingMachine(origin),
     ...coins(origin),
+    lever(origin),
     Object.assign(document.createElement("style"), {
       textContent: `
       @keyframes spin {
