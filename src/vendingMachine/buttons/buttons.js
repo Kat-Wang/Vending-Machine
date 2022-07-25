@@ -1,6 +1,6 @@
 import { highlight } from "./highlight.js";
 import { unhighlight } from "./unhighlight.js";
-import { selectDrink } from "./selectDrink.js";
+import { displayInfo, removeDisplayInfo, selectDrink } from "./selectDrink.js";
 
 const size = {
   leftSpace: 60,
@@ -37,10 +37,12 @@ export const buttons = (vendingMachineLocation) =>
     });
 
     button.addEventListener("mouseover", () => highlight(left, top));
+    button.addEventListener("mouseover", () => displayInfo(i, left, top));
 
     button.addEventListener("click", () => selectDrink(i));
 
     button.addEventListener("mouseout", () => unhighlight());
+    button.addEventListener("mouseout", () => removeDisplayInfo());
 
     return { button, i, left, top };
   });
