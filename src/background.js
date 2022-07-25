@@ -7,7 +7,7 @@ export const background = (origin) => {
     position: "absolute",
     left: origin.x - backgroundSizes.width / 2,
     top: origin.y - backgroundSizes.height / 2,
-    backgroundColor: "indianred",
+    background: "url('./assets/background.png')",
     pointerEvents: "none",
     width: `${backgroundSizes.width}px`,
     height: `${backgroundSizes.height}px`,
