@@ -58,8 +58,8 @@ export const coins = (origin) =>
     Object.assign(coin.style, {
       cursor: "pointer",
       position: "absolute",
-      top: origin.y - backgroundSizes.height / 2 + 10 + i * 40,
-      left: origin.x - backgroundSizes.width / 2 + 10,
+      top: origin.y - backgroundSizes.height / 2 + i * 40,
+      left: origin.x - backgroundSizes.width / 2 - 80,
       // backgroundColor: "#ae70707a",
       /* backgroundImage: "url('./assets/coin.png')",
       backgroundSize: "contain",
@@ -68,7 +68,7 @@ export const coins = (origin) =>
       width: coinSize,
       height: coinSize,
       transformStyle: "preserve-3d",
-      animation: "7s linear infinite spin",
+      animation: `6s linear ${i * 0.5}s infinite spin`,
     });
 
     coin.onmousedown = function (event) {
