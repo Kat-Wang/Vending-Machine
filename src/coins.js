@@ -1,7 +1,5 @@
 import { backgroundSizes } from "./main.js";
 
-export let moneySpent = 0;
-
 const inCoinhole = (event) => {
   const coinholeLocation = ((
     coinhole = document.getElementById("coinhole").getBoundingClientRect()
@@ -103,6 +101,7 @@ export const coins = (origin) =>
             coin.remove();
           });
           moneySpent += 1;
+          console.log(moneySpent);
         }
 
         document.removeEventListener("mouseup", onMouseUp);

@@ -1,6 +1,6 @@
 import { highlight } from "./highlight.js";
 import { unhighlight } from "./unhighlight.js";
-import { displayInfo, removeDisplayInfo, selectDrink } from "./selectDrink.js";
+import { displayInfo, removeDisplayInfo, selectDrink } from "./drinks.js";
 
 const size = {
   leftSpace: 60,

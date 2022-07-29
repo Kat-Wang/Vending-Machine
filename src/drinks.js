@@ -1,5 +1,3 @@
-import { moneySpent } from "./coins.js";
-
 export const displayInfo = (i, left, top) => {
   const display = document.createElement("div");
 
@@ -18,11 +16,11 @@ export const displayInfo = (i, left, top) => {
 
   document.body.append(display);
 
-  const text = document.createElement("p");
+  const title = document.createElement("p");
 
-  text.innerHTML = `<b>${drinkNames[i]}<b>`;
+  title.innerHTML = `<b>${drinkNames[i]}<b>`;
 
-  Object.assign(text.style, {
+  Object.assign(title.style, {
     position: "absolute",
     left: 10,
     fontFamily: "sans-serif",
@@ -30,7 +28,7 @@ export const displayInfo = (i, left, top) => {
     fontSize: 15,
   });
 
-  display.append(text);
+  display.append(title);
 
   const price = document.createElement("p");
 
@@ -69,6 +67,7 @@ export const removeDisplayInfo = () => {
 export function selectDrink(i) {
   if (moneySpent > 0) {
     console.log(`Bought ${drinkNames[i]}`);
+    moneySpent -= 1;
   }
 }
 
@@ -118,4 +117,28 @@ export const drinkDescs = {
   18: "Nothing personal kid.",
   19: "Nothing personal kid.",
   20: "It's just a Venonat plush.",
+};
+
+export const drinkSrcs = {
+  0: "./assets/piplup.png",
+  1: "./assets/piplup.png",
+  2: "./assets/turtwig.png",
+  3: "./assets/turtwig.png",
+  4: "./assets/chimchar.png",
+  5: "./assets/chimchar.png",
+  6: "./assets/wooper.png",
+  7: "./assets/mudkip.png",
+  8: "./assets/mudkip.png",
+  9: "./assets/seel.png",
+  10: "./assets/seel.png",
+  11: "./assets/latias.png",
+  12: "./assets/latias.png",
+  13: "./assets/jumpluff.png",
+  14: "./assets/ducklett.png",
+  15: "./assets/ducklett.png",
+  16: "./assets/gengar.png",
+  17: "./assets/gengar.png",
+  18: "./assets/abra.png",
+  19: "./assets/abra.png",
+  20: "./assets/venonat.png",
 };
