@@ -71,6 +71,7 @@ function main() {
     left: 6,
     width: 22,
     height: 31.5,
+    imageRendering: "pixelated",
   });
 }
 
