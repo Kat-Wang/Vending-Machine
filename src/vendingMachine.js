@@ -1,4 +1,4 @@
-import { buttons } from "./buttons/buttons.js";
+import { buttons } from "./buttons.js";
 import { coinhole } from "./coinhole.js";
 
 const size = {

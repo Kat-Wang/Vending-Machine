@@ -1,7 +1,8 @@
 import { background } from "./background.js";
-import { vendingMachine } from "./vendingMachine/vendingMachine.js";
+import { vendingMachine } from "./vendingMachine.js";
 import { coins, sides, topSide, bottomSide } from "./coins.js";
 import { lever } from "./lever.js";
+import { inventory, inventoryBoxes } from "./inventory.js";
 
 Object.assign(document.body.style, {
   margin: 0,
@@ -38,6 +39,7 @@ function main() {
     ...vendingMachine(origin),
     ...coins(origin),
     lever(origin),
+    inventory(origin),
     Object.assign(document.createElement("style"), {
       textContent: `
       @keyframes spin {
@@ -56,6 +58,19 @@ function main() {
 
   [...Array(5).keys()].forEach((i) => {
     document.getElementById(`${i}`).append(...sides(), bottomSide(), topSide());
+  });
+
+  document.getElementById("bigBoi").append(...inventoryBoxes);
+
+  const pip = document.createElement("img");
+  pip.src = "./assets/piplup.png";
+  document.getElementById("bigBoi").append(pip);
+  Object.assign(pip.style, {
+    position: "absolute",
+    top: 6,
+    left: 6,
+    width: 22,
+    height: 31.5,
   });
 }
 

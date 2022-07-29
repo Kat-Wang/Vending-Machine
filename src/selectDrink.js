@@ -1,3 +1,5 @@
+import { moneySpent } from "./coins.js";
+
 export const displayInfo = (i, left, top) => {
   const display = document.createElement("div");
 
@@ -65,7 +67,9 @@ export const removeDisplayInfo = () => {
 };
 
 export function selectDrink(i) {
-  console.log(drinks[i]);
+  if (moneySpent > 0) {
+    console.log(`Bought ${drinkNames[i]}`);
+  }
 }
 
 export const drinkNames = {
@@ -107,8 +111,8 @@ export const drinkDescs = {
   11: "Smogon recommends drink this for any competitive Latias companions.",
   12: "Smogon recommends drink this for any competitive Latias companions.",
   13: "Jumpluff but plush!",
-  14: "Not for trainer consumer. Only feed to Duckletts.",
-  15: "Not for trainer consumer. Only feed to Duckletts.",
+  14: "Not for trainer consumption. Only feed to Duckletts.",
+  15: "Not for trainer consumption. Only feed to Duckletts.",
   16: "You might have bad dreams after drinking this.",
   17: "You might have bad dreams after drinking this.",
   18: "Nothing personal kid.",
