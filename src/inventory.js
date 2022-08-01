@@ -28,7 +28,7 @@ export const inventoryBoxes = [...Array(5).keys()].map((i) => {
     left: 5,
     width: 38,
     height: 38,
-    backgroundColor: "white",
+    backgroundColor: "ffebe1",
     borderRadius: "3px",
   });
 
