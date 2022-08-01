@@ -71,8 +71,7 @@ export const selectDrink = (i) => {
     console.log(`Bought ${drinkNames[i]}`);
 
     const drink = document.createElement("img");
-
-    drink.src = `${drinkSrcs[i]}`;
+    drink.id = drink.src = `${drinkSrcs[i]}`;
 
     document.getElementById(`box${totalSpent}`).append(drink);
 
