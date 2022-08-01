@@ -61,18 +61,6 @@ function main() {
   });
 
   document.getElementById("bigBoi").append(...inventoryBoxes);
-
-  const pip = document.createElement("img");
-  pip.src = "./assets/piplup.png";
-  document.getElementById("bigBoi").append(pip);
-  Object.assign(pip.style, {
-    position: "absolute",
-    top: 6,
-    left: 6,
-    width: 22,
-    height: 31.5,
-    imageRendering: "pixelated",
-  });
 }
 
 new ResizeObserver(() => {

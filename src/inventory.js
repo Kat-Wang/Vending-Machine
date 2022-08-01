@@ -9,7 +9,7 @@ export const inventory = (origin) => {
     position: "absolute",
     height: 220,
     width: 48,
-    backgroundColor: "red",
+    backgroundColor: "7396ba",
     left: origin.x + backgroundSizes.width / 2 + 40,
     top: origin.y + backgroundSizes.height / 2 - 220,
   });
@@ -20,6 +20,8 @@ export const inventory = (origin) => {
 export const inventoryBoxes = [...Array(5).keys()].map((i) => {
   const box = document.createElement("div");
 
+  box.id = `box${i}`;
+
   Object.assign(box.style, {
     position: "absolute",
     top: i * 43 + 5,
@@ -27,6 +29,7 @@ export const inventoryBoxes = [...Array(5).keys()].map((i) => {
     width: 38,
     height: 38,
     backgroundColor: "white",
+    borderRadius: "3px",
   });
 
   return box;

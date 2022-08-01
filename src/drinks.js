@@ -64,12 +64,30 @@ export const removeDisplayInfo = () => {
   document.getElementById("display").remove();
 };
 
-export function selectDrink(i) {
+export const selectDrink = (i) => {
   if (moneySpent > 0) {
-    console.log(`Bought ${drinkNames[i]}`);
     moneySpent -= 1;
+
+    console.log(`Bought ${drinkNames[i]}`);
+
+    const drink = document.createElement("img");
+
+    drink.src = `${drinkSrcs[i]}`;
+
+    document.getElementById(`box${totalSpent}`).append(drink);
+
+    Object.assign(drink.style, {
+      position: "absolute",
+      top: 2,
+      left: 2,
+      width: 34,
+      height: 34,
+      imageRendering: "pixelated",
+      objectFit: "contain",
+    });
+    totalSpent += 1;
   }
-}
+};
 
 export const drinkNames = {
   0: "Bubble Beam Bottle",
