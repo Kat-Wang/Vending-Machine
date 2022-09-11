@@ -107,8 +107,8 @@ export const drinkNames = {
   15: "Can o' Peas",
   16: "Gengy Juice",
   17: "Gengy Juice",
-  18: "Teleports Behind You",
-  19: "Teleports Behind You",
+  18: "Teleport",
+  19: "Teleport",
   20: "Venonat",
 };
 
@@ -120,20 +120,20 @@ export const drinkDescs = {
   4: "Banana flavored milk - Chimchar's favorite treat cause he monke!",
   5: "Banana flavored milk - Chimchar's favorite treat cause he monke.",
   6: "I feel like Whopers would like this.",
-  7: "Heard you leik KipKip.",
-  8: "Heard you leik KipKip.",
+  7: "Heard you like Mudkip.",
+  8: "Heard you like Mudkip.",
   9: "Health drink packed with love from Seel to help you in sports.",
   10: "Health drink packed with love from Seel to help you in sports.",
-  11: "Smogon recommends drink this for any competitive Latias companions.",
-  12: "Smogon recommends drink this for any competitive Latias companions.",
+  11: "Smogon Inc. recommends drink this for any competitive Latias companions.",
+  12: "Smogon Inc. recommends drink this for any competitive Latias companions.",
   13: "Jumpluff but plush!",
   14: "Not for trainer consumption. Only feed to Duckletts.",
   15: "Not for trainer consumption. Only feed to Duckletts.",
   16: "You might have bad dreams after drinking this.",
   17: "You might have bad dreams after drinking this.",
-  18: "Nothing personal kid.",
-  19: "Nothing personal kid.",
-  20: "It's just a Venonat plush.",
+  18: "This drink teleports you if you meet people.",
+  19: "This drink teleports you if you meet people.",
+  20: "You can't drink this plushie, but it's fluffy.",
 };
 
 export const drinkSrcs = {
